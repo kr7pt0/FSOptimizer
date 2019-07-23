@@ -1,0 +1,64 @@
+<div class = "row">
+    <div class="container-fluid">
+        <div class="btn-toolbar" style="height:38px; margin-bottom:1.5em;">
+            <div class="btn-group mr-2" role="group" aria-label="First group" >
+                <select ng-model=site ng-change="loadSlates()" class="selectpicker" >
+                    <option value="" disabled selected>Select Sites</option>
+                    <option>DRAFTKINGS</option>
+                    <option>FANDUEL</option>
+                </select>
+            </div>
+
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <select class="selectpicker"
+                        ng-options="s.name for s in slate_list track by s.id"
+                        ng-model="slate"
+                        ng-change="changeSlates()">
+                        <option value="" disabled selected>Select Slates</option>
+                </select>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button  ng-click="loadPlayers()" type="button" class="btn btn-primary"> Load </button>
+            </div>
+        </div>
+        <div ng-hide="isgenerating" class="btn-toolbar" >
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <select ng-model=projection  class="selectpicker">
+                    <option value="" disabled selected>Select Projection</option>
+                    <option>Projection</option>
+                    <option>Custom</option>
+                </select>
+            </div>
+
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button  ng-click="generateLineup()" type="button" class="btn btn-primary">Generate {{lineupnumber}} lineups</button>
+                <input type="number" id="lineupnumber" min="1" max="50" ng-model="lineupnumber" />
+            </div>
+
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button  ng-click="setGlobalExposure()" type="button" class="btn btn-primary">Global Exposure</button>
+                <input type="number"  min="0" max="100" ng-model="globalexposure" />
+            </div>
+            
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button  ng-click="resetPlayers()" type="button" class="btn btn-primary">Reset </button>
+            </div>
+        </div>
+
+        <h3 class="text-info"  ng-show="isgenerating"> Please wait while generating {{lineupnumber}} lineups...
+            <div ng-show="isgenerating" class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </h3>
+
+        <br>
+
+        <div class = "row">
+            <div id="magicdiv"></div>
+        </div>
+    </div>
+</div>
+
+
+
+

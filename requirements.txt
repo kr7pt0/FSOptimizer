@@ -1,0 +1,8 @@
+flask
+flask-restless
+Flask-HTTPAuth
+pydfs-lineup-optimizer
+pandas
+pyopenssl
+requests
+flask-mysqldb
